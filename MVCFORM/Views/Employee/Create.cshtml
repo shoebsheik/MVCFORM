@@ -1,0 +1,79 @@
+﻿@model MVCFORM.Models.EmployeeModel
+
+@{ 
+    ViewBag.Title = "Create";
+}
+
+<div>
+    @if (!String.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-success">
+            @ViewBag.Message
+        </div>
+    }
+    else if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+    @using (Html.BeginForm("Create", "Employee", FormMethod.Post, new { }))
+    {
+        <div>
+            <label>Emp_ID :</label>
+            @Html.TextBoxFor(model => model.Emp_Id, new { @class = "form-control", @placeholder = " Emp_Id" })
+            @Html.ValidationMessageFor(model => model.Emp_Id, "", new { })
+        </div>
+        <div>
+            <label>Emp_Name :</label>
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = " Name" })
+            @Html.ValidationMessageFor(model => model.Name, "", new { })
+        </div>
+        <div>
+            <label>Age :</label>
+            @Html.TextBoxFor(model => model.Age, new { @class = "form-control", @placeholder = " Name" })
+            @Html.ValidationMessageFor(model => model.Age, "", new { })
+        </div>
+        <div>
+            <label>Email :</label>
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = " Emp_Id" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { })
+        </div>
+        <div>
+            <label>Gender :</label>
+            <div class="form-check">
+                @Html.RadioButtonFor(model => model.Gender, "M", new { @class = "form-check-input", id = "genderMale" })
+                <label class="form-check-label" for="genderMale">Male</label>
+            </div>
+            <div class="form-check">
+                @Html.RadioButtonFor(model => model.Gender, "F", new { @class = "form-check-input", id = "genderFemale" })
+                <label class="form-check-label" for="genderFemale">Fale</label>
+            </div>
+            <div class="form-check">
+                @Html.RadioButtonFor(model => model.Gender, "O", new { @class = "form-check-input", id = "genderOther" })
+                <label class="form-check-label" for="genderOther">Other</label>
+            </div>
+            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <label>Mobile :</label>
+            @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control", @placeholder = " Name" })
+            @Html.ValidationMessageFor(model => model.Mobile, "", new { })
+        </div>
+        <div>
+            <label>Password :</label>
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <label>Confirm Password :</label>
+            @Html.PasswordFor(model => model.ConPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+            @Html.ValidationMessageFor(model => model.ConPassword, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            <button type="submit">Create</button>
+        </div>
+    }
+</div>
+

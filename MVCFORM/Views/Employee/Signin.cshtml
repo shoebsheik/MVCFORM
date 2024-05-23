@@ -1,0 +1,21 @@
+﻿@model MVCFORM.Models.EmployeeModel
+
+
+
+@using (Html.BeginForm("Signin", "Employee", FormMethod.Post, new { }))
+{
+    <div>
+        <label>Mobile :</label>
+        @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control", @placeholder = " Name" })
+        @Html.ValidationMessageFor(model => model.Mobile, "", new { })
+    </div>
+    <div>
+        <label>Password :</label>
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <button type="submit">LOGIN</button>
+    </div>
+}
+
